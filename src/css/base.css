@@ -22,6 +22,10 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
+
+  /* background: linear-gradient(135deg, #2c3e50, #4ca1af); */
+  /* background: linear-gradient(135deg, #a1ffce, #faffd1); */
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
 }
 
 main {
