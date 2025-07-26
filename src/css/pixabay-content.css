@@ -1,195 +1,239 @@
+/* ---------- 1. root‑змінні для обох тем ---------- */
+:root {
+  /* light */
+  --bg-grad-start: #e0f8e0;
+  --bg-grad-mid: #d4f5d0;
+  --bg-grad-end: #c9f3c1;
+
+  --clr-text: #1d1d1d;
+  --clr-accent: #4e75ff;
+  --clr-accent-h: #6c8cff;
+  --clr-border: #808080;
+  --clr-card-bg: #ffffff;
+  --clr-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- 2. темна тема перемикається класом .dark ---------- */
+body.dark {
+  --bg-grad-start: #1c1c1c;
+  --bg-grad-mid: #202020;
+  --bg-grad-end: #262626;
+
+  --clr-text: #f1f1f1;
+  --clr-accent: #8ab0ff;
+  --clr-accent-h: #a6c3ff;
+  --clr-border: #555;
+  --clr-card-bg: #2b2b2b;
+  --clr-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- 3. базовий фон і типографіка ---------- */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--clr-text);
+  background: linear-gradient(
+    135deg,
+    var(--bg-grad-start),
+    var(--bg-grad-mid),
+    var(--bg-grad-end)
+  );
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ---------- 4. форма пошуку ---------- */
 .form {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 40px;
-  margin-bottom: 32px;
-}
-
-.label-pix {
+  margin: 40px auto 32px;
+  flex-wrap: wrap;
 }
 
 .pix-input {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #0b0a0a;
-  background-color: rgba(255, 255, 255, 0.2);
-
-  border: 1px solid #808080;
-  border-radius: 4px;
   width: 272px;
   height: 40px;
-  padding: 0px 16px;
+  padding: 0 16px;
+  border: 1px solid var(--clr-border);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--clr-text);
+  transition: border 0.3s, transform 0.3s;
 }
 
 .pix-input:hover {
-  border: 1px solid #000;
+  border-color: var(--clr-text);
   transform: scale(1.05);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .pix-input:focus {
   outline: none;
-  border: 1px solid #4e75ff;
+  border-color: var(--clr-accent);
 }
 
+/* ---------- 5. кнопки ---------- */
 .btn-pix,
 .load-more {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #808080;
-  border-radius: 4px;
-  padding: 8px 16px;
-  width: 91px;
+  width: 125px;
   height: 40px;
-  background: #4e75ff;
-
-  font-family: 'Montserrat', sans-serif;
+  padding: 8px 16px;
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
   color: #fff;
+  background: var(--clr-accent);
+  border: 1px solid var(--clr-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
 }
 
-.btn-pix:hover {
-  background-color: #6c8cff;
+.btn-pix:hover,
+.load-more:hover {
+  background: var(--clr-accent-h);
   transform: scale(1.05);
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
+
+.load-more {
+  margin: 0 auto 40px;
+  display: none;
+}
+
+.load-more.is-visible {
+  display: block;
+}
+
+/* ---------- 6. галерея ---------- */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
-  width: 1128px;
-  margin: 0 auto;
-  padding: 20px 0;
+  width: min(100%, 1128px);
+  margin: 0 auto 32px;
+  padding: 0 20px;
   list-style: none;
-  margin-bottom: 32px;
 }
 
-.photo-card {
+/* --------- .gallery-item ---------- */
+.gallery-item {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.photo-card img {
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.gallery-item {
-  overflow: hidden;
-  border-radius: 4px;
-  transition: transform 0.3s ease-in-out;
-  border: 1px solid #000000;
+  border: 1px solid var(--clr-border);
+  border-radius: 10px;
+  background: var(--clr-card-bg);
+  box-shadow: 0 3px 10px var(--clr-shadow);
+  transition: transform 0.3s;
 }
 
 .gallery-item:hover {
   transform: scale(1.03);
 }
-/* ===================================== */
-
-.gallery-item {
-  width: 360px;
-  height: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  margin-bottom: 20px;
-
-  display: flex;
-  flex-direction: column;
-}
 
 .gallery-item a img {
   width: 100%;
-  height: 152px; /* 200 - 48 */
+  height: 152px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
   display: block;
-  transition: transform 0.3s ease;
 }
 
+/* ----------- картка‑інфо ----------*/
 .info {
-  height: 48px;
-  padding: 4px 12px;
-  font-size: 14px;
-  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  padding: 4px 12px;
+  font-size: 14px;
+  color: var(--clr-text);
 }
 
-/* ===================================== */
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-}
-
+/* ---------- 7. loader ---------- */
 .loader {
   display: none;
-  position: absolute;
-  top: 30%;
+  position: fixed;
+  top: 50%;
   left: 50%;
   width: 120px;
   height: 120px;
-  color: #ff3d00;
-}
-
-.loader:before,
-.loader:after {
-  content: '';
-  border-radius: 50%;
-  position: absolute;
-  inset: 0;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
-}
-.loader:after {
-  box-shadow: 0 2px 0 #ff3d00 inset;
-  animation: rotate 2s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.loader {
-  display: none;
+  transform: translate(-50%, -50%);
 }
 
 .loader.is-visible {
   display: block;
 }
 
-.load-more {
-  width: 125px;
-  height: 40px;
-  margin: 0 auto;
-  display: none;
-  margin-bottom: 40px;
+.loader::before,
+.loader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px var(--clr-shadow) inset;
 }
 
-.load-more.is-visible {
-  display: block;
+.loader::after {
+  box-shadow: 0 2px 0 var(--clr-accent) inset;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------- 8. кнопка день/ніч з svg ----------- */
+
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-text);
+  transition: color 0.4s ease;
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--clr-text);
+  fill: none;
+  transition: opacity 0.3s ease;
+}
+
+/* За замовчуванням показуємо сонце, ховаємо місяць */
+.theme-toggle .moon {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.theme-toggle .sun {
+  opacity: 1;
+  position: relative;
+}
+
+/* При темній темі міняємо видимість */
+body.dark .theme-toggle .sun {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+body.dark .theme-toggle .moon {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
 }
